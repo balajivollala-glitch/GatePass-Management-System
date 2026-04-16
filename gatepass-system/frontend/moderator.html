@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gate Pass System - Moderator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Moderator Dashboard</h1>
+        <table id="requestsTable">
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        async function loadRequests() {
+            const res = await fetch('http://localhost:5000/requests');
+            const data = await res.json();
+            const tbody = document.querySelector('#requestsTable tbody');
+            tbody.innerHTML = '';
+            data.forEach(req => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${req.rollNumber}</td>
+                    <td>${req.name}</td>
+                    <td>${req.department}</td>
+                    <td>${req.date}</td>
+                    <td>${req.time}</td>
+                    <td>${req.status}</td>
+                    <td>${req.remarks}</td>
+                    <td>
+                        <button onclick='updateStatus(${req.id},"approved")'>Approve</button>
+                        <button onclick='updateStatus(${req.id},"rejected")'>Reject</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function updateStatus(id, status) {
+            const remarks = prompt("Enter remarks:");
+            const res = await fetch('http://localhost:5000/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, status, remarks })
+            });
+            const result = await res.json();
+            document.getElementById('message').innerText = result.message;
+            loadRequests();
+        }
+
+        loadRequests();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "requests": [
+    {
+      "id": 1761324081308,
+      "name": "John Doe",
+      "department": "Computer Science",
+      "date": "2025-10-25",
+      "time": "10:00",
+      "parentPhone": "1234567890",
+      "informedParent": "yes",
+      "status": "approved",
+      "remarks": "Permission granted"
+    },
+    {
+      "id": 1761325045272,
+      "name": "John Doe",
+      "department": "Computer Science",
+      "date": "2025-10-25",
+      "time": "10:00",
+      "parentPhone": "1234567890",
+      "informedParent": "yes",
+      "status": "pending",
+      "remarks": ""
+    },
+    {
+      "id": 1761325858143,
+      "name": "vollala balaji",
+      "department": "CS",
+      "date": "2007-02-26",
+      "time": "12:30",
+      "parentPhone": "9550215348",
+      "informedParent": "yes",
+      "status": "pending",
+      "remarks": ""
+    },
+    {
+      "id": 1761326695647,
+      "name": "vollala balaji",
+      "department": "CS",
+      "date": "2007-02-26",
+      "time": "12:30",
+      "parentPhone": "9550215348",
+      "informedParent": "yes",
+      "status": "pending",
+      "remarks": ""
+    }
+  ]
+}

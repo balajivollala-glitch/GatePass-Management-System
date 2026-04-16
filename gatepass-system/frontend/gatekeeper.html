@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gate Pass System - Gatekeeper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gatekeeper Panel</h1>
+        <input type="number" id="requestId" placeholder="Enter Request ID">
+        <button onclick="checkRequest()">Check Request</button>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        async function checkRequest() {
+            const id = document.getElementById('requestId').value;
+            if(!id) return alert("Enter Request ID!");
+            try {
+                const res = await fetch(`http://localhost:5000/check/${id}`);
+                const data = await res.json();
+                if(data.status === 'approved') {
+                    document.getElementById('result').innerHTML = `<p style="color:green;">Request approved ✅. Gate can be opened.</p>`;
+                } else if(data.status === 'rejected') {
+                    document.getElementById('result').innerHTML = `<p style="color:red;">Request rejected ❌. Do not allow to cross.</p>`;
+                } else {
+                    document.getElementById('result').innerHTML = `<p>Request pending.</p>`;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p style="color:red;">Error fetching request.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

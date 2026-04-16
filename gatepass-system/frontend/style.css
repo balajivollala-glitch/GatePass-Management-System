@@ -1,0 +1,199 @@
+/* styles.css
+   Minimalist theme for Gate Pass Management System
+   Fonts: Poppins
+   Colors: wheat/white, #8f191d (accent), #03505d (accent-deep)
+*/
+
+/* Import Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --accent-dark: #8f191d;
+  --accent-deep: #03505d;
+  --wheat: #fff2d9;        /* very light wheat-ish background */
+  --bg: #ffffff;
+  --muted-bg: #fbf9f6;     /* subtle off-white */
+  --text: #0f1720;
+  --muted-text: #55636b;
+  --card-radius: 14px;
+  --gap: 14px;
+  --shadow: 0 8px 24px rgba(8, 15, 18, 0.06);
+  --glass-border: 1px solid rgba(3, 80, 93, 0.06);
+}
+
+/* Reset / base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body{
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--muted-bg) 0%, #ffffff 100%);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.45;
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  min-height: 100vh;
+}
+
+/* Layout container */
+.container{
+  width: 980px;
+  max-width: 96%;
+  margin: 0 auto;
+}
+
+/* Card */
+.card{
+  background: var(--bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 18px;
+  border: var(--glass-border);
+}
+
+/* Headings */
+h1{
+  font-size: 22px;
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+h2{
+  font-size: 16px;
+  color: var(--accent-deep);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Forms */
+form { width: 100%; }
+.form-row{
+  display:flex;
+  gap: var(--gap);
+  flex-wrap:wrap;
+  margin-bottom: 12px;
+}
+.form-col{
+  flex: 1 1 220px;
+  min-width: 160px;
+}
+label{
+  display:block;
+  font-size: 13px;
+  color: var(--muted-text);
+  margin-bottom: 6px;
+}
+.input, input[type="text"], input[type="date"], input[type="time"], select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e9eceb;
+  background: #fff;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: all 0.12s ease;
+  box-shadow: none;
+}
+.input:focus, input:focus, textarea:focus, select:focus {
+  border-color: rgba(3,80,93,0.18);
+  box-shadow: 0 6px 18px rgba(3,80,93,0.06);
+}
+textarea{ min-height: 86px; resize: vertical; }
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .08s ease;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent-deep));
+  box-shadow: 0 8px 18px rgba(143,25,29,0.12);
+}
+.btn:active{ transform: translateY(1px); }
+.btn.secondary{
+  background: transparent;
+  color: var(--accent-deep);
+  border: 1px solid rgba(3,80,93,0.09);
+  box-shadow: none;
+}
+.btn.ghost{
+  background: transparent;
+  color: var(--muted-text);
+  border: 1px dashed #eee;
+}
+
+/* Table */
+.table{
+  width:100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.table th, .table td{
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  text-align: left;
+  vertical-align: middle;
+}
+.table th{
+  font-size: 13px;
+  color: var(--muted-text);
+  font-weight:600;
+}
+.small{ font-size: 12px; color: var(--muted-text); }
+
+/* Status badges */
+.badge{
+  display:inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.badge.pending{ background: rgba(143,25,29,0.06); color: #b84d45; }
+.badge.approved{ background: rgba(3,80,93,0.06); color: #03505d; }
+.badge.rejected{ background: rgba(120,120,120,0.06); color: #9b2b2b; }
+
+/* Row actions */
+.row-actions{ display:flex; gap:8px; align-items:center; }
+
+/* Footer note / helper */
+.footer-note{ font-size: 13px; color: var(--muted-text); margin-top: 10px; }
+
+/* Utilities */
+.center{ text-align:center; }
+.kv{ display:flex; gap:8px; align-items:center; }
+.mt-8{ margin-top:8px; }
+.mb-8{ margin-bottom:8px; }
+
+/* Responsive */
+@media (max-width:900px){
+  .container{ width: 94%; padding: 12px; }
+  .form-row{ gap:10px; }
+  .card{ padding: 16px; border-radius: 12px; }
+}
+
+/* Additional small-screen form stacking */
+@media (max-width:520px){
+  .form-row{ flex-direction: column; }
+  h1{ font-size:20px; }
+}
+
+/* Accessibility focus outlines */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(3,80,93,0.12);
+  outline-offset: 2px;
+}

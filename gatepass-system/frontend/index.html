@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gate Pass System - Student</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Gate Pass Request</h1>
+        <form id="studentForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="department" placeholder="Department" required>
+            <input type="date" id="date" required>
+            <input type="time" id="time" required>
+            <input type="text" id="parentPhone" placeholder="Parent Phone" required>
+            <select id="informedParent" required>
+                <option value="">Parent Informed?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <button type="submit">Submit Request</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
